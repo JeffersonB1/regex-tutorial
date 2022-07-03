@@ -1,49 +1,85 @@
-# Title (replace with your title)
+# Matching an URL 
 
-Introductory paragraph (replace this with your text)
-
+This is a tutorial on how to use regular expression to match an URL. The following is an expression to match a URL: 
+```
+/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
+```
 ## Summary
 
-Briefly summarize the regex you will be describing and what you will explain. Include a code snippet of the regex. Replace this text with your summary.
+By reading this tutorial you will be able to understand each part of the expression above and the use of it.
 
 ## Table of Contents
 
 - [Anchors](#anchors)
 - [Quantifiers](#quantifiers)
-- [OR Operator](#or-operator)
 - [Character Classes](#character-classes)
 - [Flags](#flags)
 - [Grouping and Capturing](#grouping-and-capturing)
 - [Bracket Expressions](#bracket-expressions)
-- [Greedy and Lazy Match](#greedy-and-lazy-match)
-- [Boundaries](#boundaries)
-- [Back-references](#back-references)
-- [Look-ahead and Look-behind](#look-ahead-and-look-behind)
 
 ## Regex Components
 
 ### Anchors
+We are going to have types of anchors that will be looking either for the beginning or the of a string. That way we can choose these as parameters of when the string we are looking will start or end.
+ 
+Beginning anchor: 
+^
+
+Closing anchor:
+$
 
 ### Quantifiers
+The question mark is indication that a certain string is optional, which means it could have the string or not, example in our expression:
 
-### OR Operator
+```
+(https?:\/\/)?
+```
+In the expression above we can have ```https:``` or ``` http:```. At the same time we can ignore the whole expression about by adding the ```?``` at the end of the grouping.
+
+We also have the *, this one is a combination of + and ?, which means it can match between 0 and 1 of the previous string or match one or more in a row of the previous string. You can see the use on the expression below.
+
+```
+([\/\w \.-]*)*
+```
 
 ### Character Classes
 
+The ````\d``` match a character that is type integer. We can see the use of it in the following expression:
+```
+([\da-z\.-]+)
+```
+In the expression above /d looks for a digit or a-z loos for any string betwing the range  of letter a and z.
+
+The ```\w``` matches a word character and we can see it in the following expression: 
+
+```
+([\/\w \.-]*)
+```
+In the expression above we search for a word after the simbol ```/```.
+
+
 ### Flags
 
+Regex usually are in between ```/``` so at the end of these we can specify flags for example: g(global), m(multi-line) and i (insensitive).  
+
 ### Grouping and Capturing
+Our expression has 4 groups and each of those denotated by ().
+
+First Group ```/^(https?:\/\/)?```, here we optionally use the http.
+
+Second Group ```([\da-z\.-]+)```, here we look for any character.
+
+Third Group ```([a-z\.]{2,6})```, match any character that comes before the period for example .com, .net etc...
+
+Fourth Group ```([\/\w \.-]*) ``` this group represents the directory.
 
 ### Bracket Expressions
 
-### Greedy and Lazy Match
+We use ```[]``` as bracket expression, and it is use like a ```|``` which means that whatever the value we have in between are the possible options that we are going to be looking for. For example:
 
-### Boundaries
+```[\da-z\.-]``` Here we can match a digit or a letter from a-z or .
 
-### Back-references
-
-### Look-ahead and Look-behind
 
 ## Author
 
-A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+This tutorial was created by Jefferson Bencosme, if you want to find out more visit https://github.com/JeffersonB1
